@@ -1,3 +1,8 @@
+# Disable void-pointer-to-enum-cast
+ifeq ($(cc-name),clang)
+EXTRA_CFLAGS += $(call cc-disable-warning, void-pointer-to-enum-cast)
+endif
+
 obj-$(CONFIG_MSM_PM)		+= msm-pm.o pm-data.o
 obj-$(CONFIG_MSM_IDLE_STATS)	+= lpm-stats.o
 obj-$(CONFIG_MSM_NOPM)		+= no-pm.o
