@@ -1,3 +1,8 @@
+# Disable unused-command-line-argument
+ifeq ($(cc-name),clang)
+EXTRA_CFLAGS += $(call cc-disable-warning, unused-command-line-argument)
+endif
+
 hostprogs-y	:= modpost mk_elfconfig
 always		:= $(hostprogs-y) empty.o
 
