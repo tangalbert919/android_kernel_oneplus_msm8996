@@ -21,6 +21,11 @@ obj-$(CONFIG_ARCH_MSM8937)	+= clock-cpu-8939.o
 obj-$(CONFIG_ARCH_MSM8937)	+= clock-rcgwr.o
 obj-$(CONFIG_ARCH_MSM8953)	+= clock-cpu-sdm632.o
 
+# MSM8996
+obj-$(CONFIG_ARCH_MSM8996)	+= clock-cpu-8996.o
+obj-$(CONFIG_ARCH_MSM8996)	+= clock-gcc-8996.o
+obj-$(CONFIG_ARCH_MSM8996)	+= clock-mmss-8996.o
+
 # MDM9607
 obj-$(CONFIG_ARCH_MDM9607)      +=clock-gcc-mdm9607.o
 
