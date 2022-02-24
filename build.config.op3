@@ -1,0 +1,13 @@
+ARCH=arm64
+
+CC=clang
+CLANG_PREBUILT_BIN=prebuilts-master/clang/host/linux-x86/clang-r383902/bin
+CLANG_TRIPLE=aarch64-linux-gnu-
+
+DEFCONFIG=lineageos_oneplus3_defconfig
+
+FILES="
+arch/arm64/boot/Image.gz-dtb
+vmlinux
+System.map
+"
