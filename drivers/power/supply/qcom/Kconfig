@@ -163,4 +163,10 @@ config SMB1390_CHARGE_PUMP
 	  SMB1390 is a div2 charge pump capable of delivering 6A charge current
 	  with very high efficiency.
 
+config ONEPLUS_FASTCHG
+	tristate "ONEPLUS FAST CHARGE"
+	depends on I2C
+	help
+	  Say Y here to enable the ONEPLUS FAST CHARGE driver.
+
 endmenu
