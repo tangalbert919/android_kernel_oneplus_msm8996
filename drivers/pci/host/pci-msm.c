@@ -6495,28 +6495,6 @@ static void msm_pcie_fixup_resume(struct pci_dev *dev)
 DECLARE_PCI_FIXUP_RESUME(PCIE_VENDOR_ID_QCOM, PCI_ANY_ID,
 				 msm_pcie_fixup_resume);
 
-static void msm_pcie_fixup_resume_early(struct pci_dev *dev)
-{
-	int ret;
-	struct msm_pcie_dev_t *pcie_dev = PCIE_BUS_PRIV_DATA(dev->bus);
-
-	PCIE_DBG(pcie_dev, "RC%d\n", pcie_dev->rc_idx);
-
-	if ((pcie_dev->link_status != MSM_PCIE_LINK_DISABLED) ||
-		pcie_dev->user_suspend || !pci_is_root_bus(dev->bus))
-		return;
-
-	mutex_lock(&pcie_dev->recovery_lock);
-	ret = msm_pcie_pm_resume(dev, NULL, NULL, 0);
-	if (ret)
-		PCIE_ERR(pcie_dev, "PCIe: RC%d got failure in resume:%d.\n",
-			pcie_dev->rc_idx, ret);
-
-	mutex_unlock(&pcie_dev->recovery_lock);
-}
-DECLARE_PCI_FIXUP_RESUME_EARLY(PCIE_VENDOR_ID_QCOM, PCI_ANY_ID,
-				 msm_pcie_fixup_resume_early);
-
 int msm_pcie_pm_control(enum msm_pcie_pm_opt pm_opt, u32 busnr, void *user,
 			void *data, u32 options)
 {
