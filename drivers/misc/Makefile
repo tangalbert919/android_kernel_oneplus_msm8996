@@ -66,6 +66,10 @@ obj-$(CONFIG_QCOM_XR_SMRTVWR_MISC) += qcom-xr-smrtvwr-misc.o
 obj-$(CONFIG_TUSB1064_XR_MISC) += tusb1064.o
 obj-$(CONFIG_VXR200_XR_MISC) += vxr7200.o
 
+obj-$(CONFIG_TUSB320_TYPE_C)	+= type-c-tusb320.o
+obj-$(CONFIG_FUSB301_TYPE_C)	+= type-c-fusb301.o
+obj-$(CONFIG_PTN5150_TYPE_C)	+= type-c-ptn5150.o
+obj-y  += type-c_notifier.o
 
 lkdtm-$(CONFIG_LKDTM)		+= lkdtm_core.o
 lkdtm-$(CONFIG_LKDTM)		+= lkdtm_bugs.o
