@@ -1375,10 +1375,10 @@ uint8_t int_touch(void)
 		goto INT_TOUCH_END;
 	}
 
-	input_event(ts->input_dev, EV_SYN, SYN_TIME_SEC,
+	/*input_event(ts->input_dev, EV_SYN, SYN_TIME_SEC,
 			ktime_to_timespec(ts->timestamp).tv_sec);
 	input_event(ts->input_dev, EV_SYN, SYN_TIME_NSEC,
-			ktime_to_timespec(ts->timestamp).tv_nsec);
+			ktime_to_timespec(ts->timestamp).tv_nsec);*/
 
 	for( i = 0; i < count_data; i++ ) {
 		points.status = buf[i*8];

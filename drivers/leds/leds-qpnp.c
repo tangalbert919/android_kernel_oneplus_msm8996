@@ -4291,26 +4291,26 @@ static int qpnp_leds_remove(struct platform_device *pdev)
 }
 
 /*taokai@bsp add for indicator shows when Mobile phone completely shut down*/
-static void qpnp_leds_shutdown(struct spmi_device *spmi)
+static void qpnp_leds_shutdown(struct platform_device *pdev)
 {
-	struct qpnp_led_data *led_array = dev_get_drvdata(&spmi->dev);
+	struct qpnp_led_data *led_array = dev_get_drvdata(&pdev->dev);
 	int i, parsed_leds = led_array->num_leds;
 
 	for (i = 0; i < parsed_leds; i++) {
-		if(led_array[i].id == QPNP_ID_RGB_RED){
+		if (led_array[i].id == QPNP_ID_RGB_RED) {
 			if(shutdown_enable == QPNP_ID_RGB_RED)
 				led_array[i].cdev.brightness = LED_FULL;
 			else
 				led_array[i].cdev.brightness = LED_OFF;
 		}
-	    else if(led_array[i].id == QPNP_ID_RGB_GREEN){
-			if(shutdown_enable == QPNP_ID_RGB_GREEN)
+		else if (led_array[i].id == QPNP_ID_RGB_GREEN) {
+			if (shutdown_enable == QPNP_ID_RGB_GREEN)
 				led_array[i].cdev.brightness = LED_FULL;
 			else
 				led_array[i].cdev.brightness = LED_OFF;
 		}
-		else if(led_array[i].id == QPNP_ID_RGB_BLUE){
-			if(shutdown_enable == QPNP_ID_RGB_BLUE)
+		else if (led_array[i].id == QPNP_ID_RGB_BLUE) {
+			if (shutdown_enable == QPNP_ID_RGB_BLUE)
 				led_array[i].cdev.brightness = LED_FULL;
 			else
 				led_array[i].cdev.brightness = LED_OFF;
