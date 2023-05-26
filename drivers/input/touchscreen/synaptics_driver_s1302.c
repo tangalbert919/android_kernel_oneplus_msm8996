@@ -1042,13 +1042,19 @@ static ssize_t synaptics_s1302_fw_write(struct file *file, const char __user *pa
 {
 	int val = 0;
 	struct synaptics_ts_data *ts = tc_g;
+	char buf[32];
+
     if (NULL == tc_g)
         return -EINVAL;
 	TPD_ERR("start update ******* fw_name:%s\n",tc_g->fw_name);
 	if (t > 2)
 		return -EINVAL;
+	if (copy_from_user(buf, page, t)) {
+		TPD_ERR("%s: failed to update fw.\n", __func__);
+		return t;
+	}
 
-	sscanf(page, "%d", &val);
+	sscanf(buf, "%d", &val);
 
 	if(!val)
 		val = force_update;
