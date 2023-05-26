@@ -4138,11 +4138,11 @@ static int get_prop_charger_voltage_now(struct smbchg_chip *chip)
 	if (use_fake_chgvol)
 		return fake_chgvol;
 
-	if (chip->vadc_dev == NULL) {
-		pr_err("%s: null vadc_dev!\n", __func__);
+	if (chip->vusb_vadc_dev == NULL) {
+		pr_err("%s: null vusb_vadc_dev!\n", __func__);
 		return 0;
 	}
-	rc = qpnp_vadc_read(chip->vadc_dev, USBIN, &results);
+	rc = qpnp_vadc_read(chip->vusb_vadc_dev, USBIN, &results);
 	if (rc) {
 		pr_err("Unable to read vchg rc=%d\n", rc);
 		return 0;
